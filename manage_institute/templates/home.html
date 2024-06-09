@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institute Management Dashboard</title>                                                                                                       
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            height: 100vh;
+            color: #333;
+        }
+
+        .dashboard {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2C3E50;
+            color: #ecf0f1;
+            padding: 20px;
+            flex-shrink: 0;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .logo h1 {
+            margin-bottom: 5px;
+            font-size: 1.5em;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: block;
+        }
+
+        .main-content {
+            flex: 1;
+            background-color: #ecf0f1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #2980b9;
+        }
+
+        .action-btn {
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .overview {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .overview-item {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .overview-item h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #27ae60;
+        }
+
+        .overview-item p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        .events {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .event-item, .todo-list {
+            background-color: #fff;
+            padding: 20px;
+            flex: 1;
+            margin: 0 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-item h4, .todo-list h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #2980b9;
+        }
+
+        .event-item p, .todo-list p {
+            color: #7f8c8d;
+        }
+
+        .todo-list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+        }
+
+        .no-meeting {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            background-color: #f1c40f;
+            color: #fff;
+            border-radius: 10px;
+            margin: 20px 10px;
+            flex: 1;
+        }
+        
+        .student-care {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            background-color: #e74c3c;
+            color: #fff;
+            border-radius: 10px;
+            margin: 20px 10px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Dashy</h1>
+                <p>Manage Institute</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="{% url 'student_list' %}">Student</a></li>
+                    <li><a href="#">Teacher</a></li>
+                    <li><a href="#">Department</a></li>
+                    <li><a href="#">Campus</a></li>
+                    <li><a href="{% url 'club_list' %}">Clubs</a></li>
+                    <li><a href="{% url 'book_list' %}">Library</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="{% url 'logout' %}">LogOut</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <h2>DPI Dashboard At A Glance</h2>
+                <button class="action-btn">Action <i class="fas fa-caret-down"></i></button>
+            </header>
+            <section class="overview">
+                <div class="overview-item">
+                    <h3>{{ students_count }}</h3>
+                    <p>students</p>
+                </div>
+                <div class="overview-item">
+                    <h3>{{ teachers_count }}</h3>
+                    <p>teachers</p>
+                </div>
+                <div class="overview-item">
+                    <h3>{{ clubs_count }}</h3>
+                    <p>clubs</p>
+                </div>
+                <div class="overview-item">
+                    <h3>{{ books_count }}</h3>
+                    <p>books</p>
+                </div>
+            </section>
+            <section class="events">
+                <div class="event-item">
+                    <h4>DPI Event 101</h4>
+                    <p>Delhi | CP Hall</p>
+                </div>
+                <div class="no-meeting">
+                   <p>No meeting scheduled</p>
+                </div>
+                <div class="student-care">
+                    <p>Student Care: Absent 10</p>
+                </div>
+            </section>
+            <section class="events">
+                <div class="todo-list">
+                    <h4>ToDo List</h4>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+

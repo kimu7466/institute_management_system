@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ book.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .detail-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 1em;
+            margin-right: 10px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #004080;
+        }
+
+        .action-links {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="detail-container">
+        <h2>{{ book.name }}</h2>
+        <p>{{ book.description }}</p>
+        <div class="action-links">
+            <a href="{% url 'book_update' book.pk %}">Edit</a> |
+            <a href="{% url 'book_list' %}">Back to list</a>
+        </div>
+    </div>
+</body>
+</html>

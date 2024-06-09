@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+   <div>
+    <h4>HOME PAGE</h4>
+    <h4>{{request.session.name}}</h4>
+    <h4>{{request.session.email}}</h4>
+    <h4>{{request.session.department_id}}</h4>
+    <h4>{{request.session.department_name}}</h4>
+    <a href="{% url 'logout' %}"><button>logout</button></a>
+   </div>
+   <hr>
+
+   <a href="{% url 'student_list' %}"><button>Students</button></a>
+   <a href="{% url 'club_list' %}"><button>Clubs</button></a>
+   <a href="{% url 'book_list' %}"><button>books</button></a>
+   
+   
+
+</body>
+</html>

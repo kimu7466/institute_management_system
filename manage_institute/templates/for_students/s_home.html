@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        h4 {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        a {
+            text-decoration: none;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+   <div>
+    <h4>HOME PAGE</h4>
+    <h4>{{ request.session.name }}</h4>
+    <h4>{{ request.session.email }}</h4>
+    <h4>{{ request.session.department_id }}</h4>
+    <h4>{{ request.session.department_name }}</h4>
+    <a href="{% url 'logout' %}"><button>logout</button></a>
+   </div>
+   <hr>
+
+   <a href="{% url 'student_list' %}"><button>Students</button></a>
+   <a href="{% url 'club_list' %}"><button>Clubs</button></a>
+   <a href="{% url 'book_list' %}"><button>Books</button></a>
+</body>
+</html>

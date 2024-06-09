@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institute Management System - Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Institute Management System Dashboard</h1>
+    
+    <h2>Students</h2>
+    <ul>
+    {% for student in students %}
+        <li>{{ student.name }} - {{ student.roll_number }} - {{ student.age }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Teachers</h2>
+    <ul>
+    {% for teacher in teachers %}
+        <li>{{ teacher.name }} - {{ teacher.subject }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Departments</h2>
+    <ul>
+    {% for department in departments %}
+        <li>{{ department.name }} - HOD: {{ department.hod }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Campuses</h2>
+    <ul>
+    {% for campus in campuses %}
+        <li>{{ campus.name }} - Location: {{ campus.location }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Clubs</h2>
+    <ul>
+    {% for club in clubs %}
+        <li>{{ club.name }} - Faculty Advisor: {{ club.faculty_advisor }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Parents</h2>
+    <ul>
+    {% for parent in parents %}
+        <li>{{ parent.name }} - Student: {{ parent.student.name }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Library</h2>
+    <p>Library information goes here.</p>
+
+    <h2>Routine</h2>
+    <p>Class routine goes here.</p>
+
+    <h2>Events</h2>
+    <ul>
+    {% for event in events %}
+        <li>{{ event.name }} - Date: {{ event.date }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

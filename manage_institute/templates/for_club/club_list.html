@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clubs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #444;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+
+        a:hover {
+            color: #004080;
+        }
+
+        .create-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-button:hover {
+            background-color: #218838;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .club-actions {
+            font-size: 0.9em;
+        }
+
+        .club-actions a {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Club List</h2>
+    <a href="{% url 'club_create' %}" class="create-button">Create new club</a>
+    <ul>
+        {% for club in clubs %}
+            <li>
+                <span>
+                    <a href="{% url 'club_detail' club.pk %}">{{ club.name }}</a>
+                </span>
+                <span class="club-actions">
+                    <a href="{% url 'club_update' club.pk %}">Edit</a> |
+                    <a href="{% url 'club_delete' club.pk %}">Delete</a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
